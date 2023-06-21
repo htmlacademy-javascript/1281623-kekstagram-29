@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
 * Студент: [Артём Виолет](https://up.htmlacademy.ru/javascript/29/user/1281623).
-* Наставник: [Станислав Михайлов](https://htmlacademy.ru/profile/id139638).
+* Наставник: [Артём Новоселов](https://htmlacademy.ru/profile/id1195129).
 
 ---
 
