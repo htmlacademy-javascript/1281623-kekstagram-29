@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const checkStringLength = (string, length) => string.length <= length;
 
 const isPalindrome = (string) => {
@@ -40,4 +41,3 @@ const extractDigits = (input) => {
 // console.log(extractDigits(-1)); // 1
 // console.log(extractDigits(1.5)); // 15
 
-export { checkStringLength, isPalindrome, extractDigits };
