@@ -40,4 +40,3 @@ const extractDigits = (input) => {
 // console.log(extractDigits(2023)); // 2023
 // console.log(extractDigits(-1)); // 1
 // console.log(extractDigits(1.5)); // 15
-

@@ -29,10 +29,10 @@ const DESCRIPTIONS = [
 const MESSAGES = [
   'Everything is great!',
   'Overall, not bad. But not everything.',
-  'When taking a photo, it would be good to remove your finger from the frame. After all, it\'s just unprofessional.',
+  "When taking a photo, it would be good to remove your finger from the frame. After all, it's just unprofessional.",
   'My grandmother accidentally sneezed while holding the camera, and she took a better photo than this.',
   'I slipped on a banana peel and dropped the camera on a cat, and I took a better photo than this.',
-  'People\'s faces in the picture are distorted as if they are being beaten. How could you capture such an unfortunate moment?!',
+  "People's faces in the picture are distorted as if they are being beaten. How could you capture such an unfortunate moment?!",
 ];
 
 const NAMES = [
@@ -80,13 +80,13 @@ const LikesAmount = {
   MAX: 200,
 };
 
-const getRandomInteger = (a, b) => {
-  if (a < 0 || b < 0) {
+const getRandomInteger = (min, max) => {
+  if (min < 0 || max < 0 || min > max) {
     return NaN;
   }
 
-  const lower = Math.ceil(Math.min(a, b));
-  const upper = Math.floor(Math.max(a, b));
+  const lower = Math.ceil(min);
+  const upper = Math.floor(max);
   const result = Math.random() * (upper - lower + 1) + lower;
 
   return Math.floor(result);
@@ -105,8 +105,6 @@ const createIdGenerator = () => {
 };
 
 const generateCommentId = createIdGenerator();
-const generatePictureId = createIdGenerator();
-const generatePhotoId = createIdGenerator();
 
 const createComment = () => ({
   id: generateCommentId(),
@@ -120,15 +118,19 @@ const createComment = () => ({
 
 const createComments = (length) => Array.from({ length }, createComment);
 
-const createPicture = (_, index) => ({
-  id: generatePictureId(),
-  url: `photos/${generatePhotoId()}.jpg`,
-  description: DESCRIPTIONS[index],
-  likes: getRandomInteger(LikesAmount.MIN, LikesAmount.MAX),
-  comments: createComments(
-    getRandomInteger(CommentsAmount.MIN, CommentsAmount.MAX)
-  ),
-});
+const createPicture = (_, index) => {
+  const idNumber = index + 1;
+
+  return {
+    id: idNumber,
+    url: `photos/${idNumber}.jpg`,
+    description: DESCRIPTIONS[index],
+    likes: getRandomInteger(LikesAmount.MIN, LikesAmount.MAX),
+    comments: createComments(
+      getRandomInteger(CommentsAmount.MIN, CommentsAmount.MAX)
+    ),
+  };
+};
 
 const createPictures = () =>
   Array.from({ length: PICTURES_COUNT }, createPicture);
