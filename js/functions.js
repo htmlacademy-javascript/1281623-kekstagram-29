@@ -24,14 +24,15 @@ const extractDigits = (input) => {
 };
 
 const isMeetingWithinWorkingHours = (startTime, endTime, meetingStart, meetingDuration) => {
-  const [startHours, startMinutes] = startTime.split(':').map(Number);
-  const startInMinutes = startHours * 60 + startMinutes;
 
-  const [endHours, endMinutes] = endTime.split(':').map(Number);
-  const endInMinutes = endHours * 60 + endMinutes;
+  const getTimeInMinutes = (time) => {
+    const [hours, minutes] = time.split(':').map(Number);
+    return hours * 60 + minutes;
+  };
 
-  const [meetingStartHours, meetingStartMinutes] = meetingStart.split(':').map(Number);
-  const meetingStartInMinutes = meetingStartHours * 60 + meetingStartMinutes;
+  const startInMinutes = getTimeInMinutes(startTime);
+  const endInMinutes = getTimeInMinutes(endTime);
+  const meetingStartInMinutes = getTimeInMinutes(meetingStart);
 
   const meetingEndInMinutes = meetingStartInMinutes + meetingDuration;
 
