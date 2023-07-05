@@ -1,20 +1,24 @@
-const pictureContainer = document.querySelector('.pictures');
+import { createPictures } from './create-pictures.js';
+
+const picturesContainer = document.querySelector('.pictures');
 const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
 
-const pictureContainerFragment = document.createDocumentFragment();
+const picturesContainerFragment = document.createDocumentFragment();
 
 const renderPictures = (pictures) => {
+  pictures = createPictures();
+
   pictures.forEach((picture) => {
     const pictureElement = pictureTemplate.cloneNode(true);
 
     pictureElement.querySelector('.picture__img').src = picture.url;
     pictureElement.querySelector('.picture__img').alt = picture.description;
-    pictureElement.querySelector('.picture__comments').textContent = picture.comments.length;
+    pictureElement.querySelector('.picture__comments').textContent = picture.comments;
     pictureElement.querySelector('.picture__likes').textContent = picture.likes;
 
-    pictureContainerFragment.append(pictureElement);
+    picturesContainerFragment.append(pictureElement);
   });
-  pictureContainer.append(pictureContainerFragment);
+  picturesContainer.append(picturesContainerFragment);
 };
 
-export { renderPictures };
+renderPictures();
