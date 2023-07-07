@@ -1,11 +1,10 @@
 import { createPictures } from './create-pictures.js';
 
-const picturesContainer = document.querySelector('.pictures');
-const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
-
-const picturesContainerFragment = document.createDocumentFragment();
-
 const renderPictures = (pictures) => {
+  const picturesContainer = document.querySelector('.pictures');
+  const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
+  const picturesContainerFragment = document.createDocumentFragment();
+
   pictures = createPictures();
 
   pictures.forEach((picture) => {
