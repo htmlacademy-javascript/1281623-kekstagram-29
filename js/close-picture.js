@@ -1,21 +1,35 @@
-const bigPicture = document.querySelector('.big-picture');
-const bigPictureCancel = document.querySelector('.big-picture__cancel');
+import { onCommentsLoaderClick } from './open-picture.js';
 
 const isEscapeKey = (evt) => evt.key === 'Escape';
 
 const closePicture = () => {
+  const bigPicture = document.querySelector('.big-picture');
+  const commentsLoader = bigPicture.querySelector('.comments-loader');
+
   bigPicture.classList.add('hidden');
   document.body.classList.remove('modal-open');
+  commentsLoader.removeEventListener('click', onCommentsLoaderClick);
 };
 
-document.addEventListener('keydown', (evt) => {
-  if (isEscapeKey(evt)) {
+const onDocumentKeydownEscape = () => {
+  document.addEventListener('keydown', (evt) => {
+    if (isEscapeKey(evt)) {
+      evt.preventDefault();
+      closePicture();
+    }
+  });
+};
+
+onDocumentKeydownEscape();
+
+const onBigPictureCancelClick = () => {
+  const bigPicture = document.querySelector('.big-picture');
+  const bigPictureCancel = bigPicture.querySelector('.big-picture__cancel');
+
+  bigPictureCancel.addEventListener('click', (evt) => {
     evt.preventDefault();
     closePicture();
-  }
-});
+  });
+};
 
-bigPictureCancel.addEventListener('click', (evt) => {
-  evt.preventDefault();
-  closePicture();
-});
+onBigPictureCancelClick();
