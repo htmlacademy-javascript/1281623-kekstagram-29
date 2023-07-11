@@ -47,8 +47,8 @@ const createPicture = (_, index) => {
     id: idNumber,
     url: `photos/${idNumber}.jpg`,
     description: DESCRIPTIONS[index],
-    likes: getRandomInteger(LikesAmount.MIN, LikesAmount.MAX),
     comments: getRandomInteger(CommentsAmount.MIN, CommentsAmount.MAX),
+    likes: getRandomInteger(LikesAmount.MIN, LikesAmount.MAX),
   };
 };
 
