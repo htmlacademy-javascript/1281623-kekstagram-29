@@ -10,7 +10,7 @@ const renderComments = (comments) => {
     commentElement.querySelector('.social__picture').alt = name;
     commentElement.querySelector('.social__text').textContent = message;
 
-    commentsContainerFragment.append(commentElement); 
+    commentsContainerFragment.append(commentElement);
   });
   commentsContainer.innerHTML = '';
   commentsContainer.append(commentsContainerFragment);
