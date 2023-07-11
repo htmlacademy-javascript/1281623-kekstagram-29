@@ -3,18 +3,17 @@ const renderComments = (comments) => {
   const commentTemplate = document.querySelector('#comment').content.querySelector('.social__comment');
   const commentsContainerFragment = document.createDocumentFragment();
 
-  comments.forEach((comment) => {
+  comments.forEach(({ avatar, name, message }) => {
     const commentElement = commentTemplate.cloneNode(true);
 
-    commentElement.querySelector('.social__picture').src = comment.avatar;
-    commentElement.querySelector('.social__picture').alt = comment.name;
-    commentElement.querySelector('.social__text').textContent = comment.message;
+    commentElement.querySelector('.social__picture').src = avatar;
+    commentElement.querySelector('.social__picture').alt = name;
+    commentElement.querySelector('.social__text').textContent = message;
 
-    commentsContainerFragment.append(commentElement);
+    commentsContainerFragment.append(commentElement); 
   });
   commentsContainer.innerHTML = '';
   commentsContainer.append(commentsContainerFragment);
 };
 
 export { renderComments };
-
