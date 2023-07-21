@@ -1,6 +1,5 @@
 import { onCommentsLoaderClick } from './open-picture.js';
-
-const isEscapeKey = (evt) => evt.key === 'Escape';
+import { isEscapeKey } from './util.js';
 
 const closePicture = () => {
   const bigPicture = document.querySelector('.big-picture');
