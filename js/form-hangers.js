@@ -30,9 +30,10 @@ document.addEventListener('keydown', (evt) => {
   if (isEscapeKey(evt) && descriptionTextarea !== document.activeElement && hashtagsInput !== document.activeElement) {
     evt.preventDefault();
     closeForm();
-  } else {
-    evt.stopPropagation();
+    return;
   }
+
+  evt.stopPropagation();
 });
 
 

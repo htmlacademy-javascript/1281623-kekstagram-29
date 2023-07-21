@@ -26,7 +26,6 @@ const loadMoreComments = (comments) => {
 };
 
 const openPicture = (evt) => {
-  const LOCAL_PATH = 'http://localhost:3000';
   const bigPicture = document.querySelector('.big-picture');
   const bigPictureImg = bigPicture.querySelector('.big-picture__img img');
   const socialCaption = bigPicture.querySelector('.social__caption');
@@ -34,7 +33,7 @@ const openPicture = (evt) => {
   const socialCommentCount = bigPicture.querySelector('.social__comment-count');
   const commentsLoader = bigPicture.querySelector('.comments-loader');
 
-  bigPictureImg.src = evt.target.src.replace(LOCAL_PATH, '');
+  bigPictureImg.src = evt.target.src;
   socialCaption.textContent = evt.target.alt;
   likesCount.textContent = evt.target.nextElementSibling.querySelector('.picture__likes').textContent;
   commentsTotalCount = evt.target.nextElementSibling.querySelector('.picture__comments').textContent;
