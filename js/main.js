@@ -3,4 +3,6 @@ import './open-picture.js';
 import './close-picture.js';
 import './form-hangers.js';
 import './form-validation.js';
+import './scale-picture.js';
+import './effect-picture.js';
 
