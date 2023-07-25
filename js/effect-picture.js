@@ -49,16 +49,18 @@ slider.noUiSlider.on('update', (values) => {
 });
 
 effects.forEach((effect) => {
-  effect.addEventListener('change', function () {
-    const selectedEffect = this.value;
+  effect.addEventListener('change', (evt) => {
+    const selectedEffect = evt.target.value;
+
     if (selectedEffect === 'none') {
       imgPreview.style.filter = 'none';
       slider.style.display = 'none';
       effectLevelValue.textContent = '100%';
-    } else {
-      slider.style.display = 'block';
-      slider.noUiSlider.set(100);
-      updateSlider(100);
+      return;
     }
+
+    slider.style.display = 'block';
+    slider.noUiSlider.set(100);
+    updateSlider(100);
   });
 });
